@@ -55,6 +55,7 @@
 
     <ItemGroup>
       <PackageReference Include="MudBlazor" Version="8.3.0" />
+      <PackageReference Include="Scalar.AspNetCore" Version="2.1.2" />
     </ItemGroup>
 
 </Project>

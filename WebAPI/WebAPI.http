@@ -1,6 +1,15 @@
-@WebAPI_HostAddress = http://localhost:5005
+@WebAPI_HostAddress = http://localhost:5005/resource
 
-GET {{WebAPI_HostAddress}}/weatherforecast/
+GET {{WebAPI_HostAddress}}/
 Accept: application/json
 
 ###
+
+POST {{WebAPI_HostAddress}}/
+Content-Type: application/json
+
+"Raquette"
+
+###
+
+DELETE {{WebAPI_HostAddress}}/da1e1ac6-d687-4393-807b-a7e602a2998d
