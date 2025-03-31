@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebServer", "BlazorWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{1BC28826-E3C3-4F42-9416-189F4B7246B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{335DAA07-6643-47B7-A91A-818A35D9993E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1BC28826-E3C3-4F42-9416-189F4B7246B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC28826-E3C3-4F42-9416-189F4B7246B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC28826-E3C3-4F42-9416-189F4B7246B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335DAA07-6643-47B7-A91A-818A35D9993E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335DAA07-6643-47B7-A91A-818A35D9993E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335DAA07-6643-47B7-A91A-818A35D9993E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335DAA07-6643-47B7-A91A-818A35D9993E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

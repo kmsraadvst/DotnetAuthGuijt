@@ -1,0 +1,59 @@
+@page "/Shop"
+
+@inject ProductRepository Repo
+
+
+<MudText Typo="Typo.h4">Shop</MudText>
+
+<MudForm >
+    <MudTextField T="string" bind-Value="_product"/>
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        OnClick="@AddProduct">
+        Add Shop
+    </MudButton>
+</MudForm>
+
+@foreach (var product in _products)
+{
+    <MudCard>
+        <MudCardHeader>
+            @product.Guid
+        </MudCardHeader>
+        <MudCardActions>
+            <MudIconButton 
+                Icon="@Icons.Material.Filled.Delete"
+                Color="Color.Error"
+                OnClick="@(() => DeleteProduct(product.Guid))"/>
+        </MudCardActions>
+        <MudCardContent>
+            @product.Descrition
+        </MudCardContent>
+    </MudCard>
+}
+
+@code {
+    private string _product = string.Empty;
+
+    private IEnumerable<Product> _products = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await Repo.GetAllAsync();
+    }
+
+    private async Task AddProduct()
+    {
+        if(!string.IsNullOrEmpty(_product)) await Repo.CreateAsync(_product);
+        
+        StateHasChanged();
+    }
+
+    private async Task DeleteProduct(Guid id)
+    {
+        await Repo.DeleteAsync(id);
+
+        StateHasChanged();
+    }
+}

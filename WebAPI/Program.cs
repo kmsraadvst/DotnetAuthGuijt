@@ -1,11 +1,17 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/hukar-login";
-        options.LogoutPath = "/hukar-logout";
-    });
+// builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    // .AddCookie(options =>
+    // {
+    //     options.LoginPath = "/hukar-login";
+    //     options.LogoutPath = "/hukar-logout";
+    //     options.Cookie.HttpOnly = true;
+    //     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    //     options.SlidingExpiration = true;
+    //     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //     options.Cookie.SameSite = SameSiteMode.Strict;
+    //     options.Cookie.Domain = "localhost";
+    // });
 
 builder.Services.AddAuthorization();
 

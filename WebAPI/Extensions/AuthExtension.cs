@@ -1,6 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-
 namespace WebAPI.Extensions;
 
 public static class AuthExtension
@@ -16,8 +13,14 @@ public static class AuthExtension
             var identity = new ClaimsIdentity([ claimOne, claimTwo ], CookieAuthenticationDefaults.AuthenticationScheme);
 
             var user = new ClaimsPrincipal(identity);
+
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20)
+            };
             
-            await ctx.SignInAsync(user);
+            await ctx.SignInAsync(user, authProperties);
         });
 
         app.MapGet("/hukar-logout", async (HttpContext ctx) =>

@@ -4,6 +4,16 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        font-src 'self' https://fonts.gstatic.com; 
+        script-src 'self'; 
+        connect-src 'self'; 
+        img-src 'self' data:;
+        ">
+    
     <base href="/"/>
     <link rel="stylesheet" href="@Assets["app.css"]"/>
     <link rel="stylesheet" href="@Assets["BlazorWebServer.styles.css"]"/>

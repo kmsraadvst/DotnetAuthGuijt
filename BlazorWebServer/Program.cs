@@ -8,7 +8,14 @@ builder.Services.AddAuthentication()
     .AddCookie("HukarSchemeCookie");
 builder.Services.AddAuthorization();
 
+builder.Services.AddHttpClient("api-hukar", cfg =>
+{
+    cfg.BaseAddress = new Uri("http://localhost:5005");
+});
+
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton<ProductRepository>();
 
 var app = builder.Build();
 
