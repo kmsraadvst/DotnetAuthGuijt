@@ -6,7 +6,9 @@ public class ProductRepository(IHttpClientFactory factory)
     {
         var client = factory.CreateClient("api-hukar");
 
-        await client.PostAsJsonAsync("/resource", resource);
+        var response = await client.PostAsJsonAsync("/resource", resource);
+
+        Console.WriteLine($"Post Statut Code {response.StatusCode}");
     }
 
     public async Task<IEnumerable<Product>> GetAllAsync()

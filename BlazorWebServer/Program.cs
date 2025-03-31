@@ -8,9 +8,14 @@ builder.Services.AddAuthentication()
     .AddCookie("HukarSchemeCookie");
 builder.Services.AddAuthorization();
 
+var apiKey = builder.Configuration["ApiKey"];
+
+Console.WriteLine($"api key {apiKey}");
+
 builder.Services.AddHttpClient("api-hukar", cfg =>
 {
     cfg.BaseAddress = new Uri("http://localhost:5005");
+    cfg.DefaultRequestHeaders.Add("x-api-key", apiKey);
 });
 
 builder.Services.AddMudServices();

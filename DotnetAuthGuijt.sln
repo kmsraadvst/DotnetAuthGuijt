@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{335DAA07-6643-47B7-A91A-818A35D9993E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateApiKey", "GenerateApiKey\GenerateApiKey.csproj", "{28570075-F31A-421D-85D3-B74DCDC51206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{335DAA07-6643-47B7-A91A-818A35D9993E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{335DAA07-6643-47B7-A91A-818A35D9993E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{335DAA07-6643-47B7-A91A-818A35D9993E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28570075-F31A-421D-85D3-B74DCDC51206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28570075-F31A-421D-85D3-B74DCDC51206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28570075-F31A-421D-85D3-B74DCDC51206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28570075-F31A-421D-85D3-B74DCDC51206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -5,33 +5,49 @@
 
 <MudText Typo="Typo.h4">Shop</MudText>
 
-<MudForm >
-    <MudTextField T="string" bind-Value="_product"/>
-    <MudButton
-        Variant="Variant.Filled"
-        Color="Color.Primary"
-        OnClick="@AddProduct">
-        Add Shop
-    </MudButton>
-</MudForm>
+<MudPaper Class="pa-4 my-12" Elevation="2" MaxWidth="480px">
+    <MudForm>
+        <MudStack Spacing="6">
+            <MudTextField
+                T="string"
+                @bind-Value="_product"
+                Placeholder="Add product"
+                Variant="Variant.Outlined"/>
 
+            <MudButton
+                Variant="Variant.Filled"
+                Color="Color.Primary"
+                OnClick="@AddProduct">
+                Add Shop
+            </MudButton>
+        </MudStack>
+    </MudForm>
+</MudPaper>
+
+<MudStack Spacing="6">
 @foreach (var product in _products)
 {
-    <MudCard>
+    <MudCard Style="max-width:480px">
         <MudCardHeader>
-            @product.Guid
+            <CardHeaderContent>
+                <MudText Typo="Typo.h6">@product.Guid</MudText>
+            </CardHeaderContent>
+            <CardHeaderActions>
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Delete"
+                    Color="Color.Error"
+                    OnClick="@(() => DeleteProduct(product.Guid))"/>
+            </CardHeaderActions>
         </MudCardHeader>
-        <MudCardActions>
-            <MudIconButton 
-                Icon="@Icons.Material.Filled.Delete"
-                Color="Color.Error"
-                OnClick="@(() => DeleteProduct(product.Guid))"/>
-        </MudCardActions>
+        
         <MudCardContent>
-            @product.Descrition
+            <MudText Typo="Typo.h5" Color="Color.Primary">
+                @product.Descrition
+            </MudText>
         </MudCardContent>
     </MudCard>
 }
+</MudStack>
 
 @code {
     private string _product = string.Empty;
@@ -40,13 +56,17 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await Repo.GetAllAsync();
+        await UpdateProductsAsync();
     }
 
     private async Task AddProduct()
     {
-        if(!string.IsNullOrEmpty(_product)) await Repo.CreateAsync(_product);
+        Console.WriteLine($"Dans AddProduct _product: {_product}");
         
+        if (!string.IsNullOrEmpty(_product)) await Repo.CreateAsync(_product);
+            
+        await UpdateProductsAsync();
+
         StateHasChanged();
     }
 
@@ -54,6 +74,10 @@
     {
         await Repo.DeleteAsync(id);
 
+        await UpdateProductsAsync();
+
         StateHasChanged();
     }
+
+    private async Task UpdateProductsAsync() => _products = (await Repo.GetAllAsync()).OrderByDescending(o => o.Added);
 }

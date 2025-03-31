@@ -1,3 +1,3 @@
 namespace Domain.Entities;
 
-public record Product(Guid Guid, string Descrition);
+public record Product(Guid Guid, string Descrition, DateTime Added);

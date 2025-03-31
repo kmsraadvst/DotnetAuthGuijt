@@ -1,3 +1,5 @@
+using WebAPI.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -13,16 +15,18 @@ var builder = WebApplication.CreateBuilder(args);
     //     options.Cookie.Domain = "localhost";
     // });
 
-builder.Services.AddAuthorization();
+// builder.Services.AddAuthorization();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Configuration.AddEnvironmentVariables();
+
 var app = builder.Build();
 
-app.UseAuthentication();
-app.UseAuthorization();
+// app.UseAuthentication();
+// app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -31,10 +35,13 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseMiddleware<DisplayHeadersMiddleware>();
+// app.UseMiddleware<ApiKeyAuthenticationMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.MapResource();
-app.MapAuth();
+// app.MapAuth();
 
 app.Run();
 
