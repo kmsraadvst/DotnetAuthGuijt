@@ -1,3 +1,4 @@
+using WebAPI.Endpoints;
 using WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +41,7 @@ app.UseMiddleware<DisplayHeadersMiddleware>();
 
 app.UseHttpsRedirection();
 
+app.MapEnvTest();
 app.MapResource();
 // app.MapAuth();
 

@@ -1,8 +1,6 @@
-using WebAPI.Filters;
+namespace WebAPI.Endpoints;
 
-namespace WebAPI.Extensions;
-
-public static class ProductExtension
+public static class ProductEndpoints
 {
     private static readonly List<Product> Resources =
     [

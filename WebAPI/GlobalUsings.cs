@@ -7,4 +7,5 @@ global using Microsoft.AspNetCore.Authentication.Cookies;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Mvc;
 global using Scalar.AspNetCore;
-global using WebAPI.Extensions;
+global using WebAPI.Filters;
+global using static Microsoft.AspNetCore.Http.Results;

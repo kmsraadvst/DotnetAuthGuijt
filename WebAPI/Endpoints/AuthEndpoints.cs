@@ -1,6 +1,6 @@
-namespace WebAPI.Extensions;
+namespace WebAPI.Endpoints;
 
-public static class AuthExtension
+public static class AuthEndpoints
 {
     public static WebApplication MapAuth(this WebApplication app)
     {
