@@ -1,3 +1,6 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using WebAPI.Endpoints;
 using WebAPI.Middlewares;
 
@@ -16,7 +19,21 @@ var builder = WebApplication.CreateBuilder(args);
     //     options.Cookie.Domain = "localhost";
     // });
 
-// builder.Services.AddAuthorization();
+    var secretBytes = Encoding.UTF8.GetBytes(builder.Configuration["Authentication:secretForKey"] ?? "");
+
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Authentication:Issuer"],
+                ValidAudience = builder.Configuration["Authentication:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(secretBytes),
+            };
+        });
+
+builder.Services.AddAuthorization();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -26,8 +43,8 @@ builder.Configuration.AddEnvironmentVariables();
 
 var app = builder.Build();
 
-// app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -43,7 +60,7 @@ app.UseHttpsRedirection();
 
 app.MapEnvTest();
 app.MapResource();
-// app.MapAuth();
+app.MapAuth();
 
 app.Run();
 

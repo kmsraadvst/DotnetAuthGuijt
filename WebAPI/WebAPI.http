@@ -1,15 +1,26 @@
-@WebAPI_HostAddress = http://localhost:5005/resource
+@WebAPI_HostAddress = http://localhost:5005
 
-GET {{WebAPI_HostAddress}}/
+GET {{WebAPI_HostAddress}}/resource
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0IiwiZ2l2ZW5uYW1lIjoiaHVrYXIiLCJlbWFpbCI6Imh1a2FyQHJlZC5iZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImRldiIsIm5iZiI6MTc0MzY4OTUzNywiZXhwIjoxNzQzNjkzMTM3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDUiLCJhdWQiOiJyZXNvdXJjZWFwaSJ9.WaP-tHO3Jd5B748T3x3jDWRQmbSY_MyaXT6Cc3BBxk4
 Accept: application/json
 
 ###
 
-POST {{WebAPI_HostAddress}}/
+POST {{WebAPI_HostAddress}}/resource
 Content-Type: application/json
 
 "Raquette"
 
 ###
 
-DELETE {{WebAPI_HostAddress}}/da1e1ac6-d687-4393-807b-a7e602a2998d
+DELETE {{WebAPI_HostAddress}}/resource/da1e1ac6-d687-4393-807b-a7e602a2998d
+
+###
+
+POST {{WebAPI_HostAddress}}/account
+Content-Type: application/json
+
+{
+  "name": "hukar",
+  "password": "xxx"
+}

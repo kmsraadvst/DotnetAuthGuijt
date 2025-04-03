@@ -13,8 +13,8 @@ public static class ProductEndpoints
     public static WebApplication MapResource(this WebApplication app)
     {
         var resourceGroup = app
-            .MapGroup("/resource");
-            // .RequireAuthorization();
+            .MapGroup("/resource")
+            .RequireAuthorization();
 
         resourceGroup.MapGet("/",  () => Results.Ok(Resources));
         
